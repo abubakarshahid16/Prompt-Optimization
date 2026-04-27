@@ -1,83 +1,70 @@
 # Prompt Optimization
 
-A comparative project on automated prompt engineering strategies for improving large language model performance on multi-step math reasoning tasks. The work evaluates several prompt-optimization algorithms under a shared token budget and compares their effectiveness on GSM8K-style problems.
+A comparative LLM evaluation project focused on **automated prompt optimization** for multi-step math reasoning tasks.
 
-## Overview
+Instead of treating prompting as trial-and-error, this repository approaches it as a measurable optimization problem: how can we improve prompt quality under a constrained token budget?
 
-This repository explores prompt optimization as an applied research problem rather than relying on manual prompt tuning only. The central idea is to automatically refine prompts so that a language model performs better on math word problems that require multi-step reasoning and numerical accuracy.
+## Problem this project solves
 
-The project compares three approaches:
+In practical LLM systems, prompt quality directly affects:
+
+- answer correctness
+- inference cost
+- consistency across tasks
+- reliability in production workflows
+
+Manual prompt tuning is slow and hard to evaluate rigorously. This project explores how prompt improvement can be automated and compared systematically.
+
+## What this project does
+
+The repository evaluates multiple prompt-optimization strategies on GSM8K-style reasoning tasks under a shared token budget.
+
+The compared approaches are:
 
 - Naive APE-style optimization
 - Evolutionary prompt optimization
 - Thompson Sampling
 
-All experiments were evaluated under a controlled token budget to keep the comparison fair.
+## Research goal
 
-## Research Goal
-
-The objective is to improve prompt quality for solving GSM8K-style math tasks while tracking:
+The goal is to improve prompt performance while tracking:
 
 - answer correctness
 - optimization efficiency
 - token usage
-- relative performance of different search strategies
+- relative tradeoffs between search strategies
 
-## Visual Results
+## Visual results
 
 | Algorithm Comparison | Individual Algorithm Behavior |
 | --- | --- |
 | ![Comparison plot](comparison_plot.png) | ![Individual algorithms](individual_algorithms.png) |
 
-## Repository Contents
+## Repository contents
 
 - `Prompt_Optimization.ipynb`: main notebook with implementation and evaluation
-- `comparison_plot.png`: comparative performance visualization
-- `individual_algorithms.png`: algorithm-specific visualization
+- `comparison_plot.png`: comparative visualization
+- `individual_algorithms.png`: algorithm-specific plot
 - `requirements.txt`: Python dependencies
 
-## Method Summary
+## Why this project matters
+
+- It frames prompt engineering as an optimization workflow, not just experimentation.
+- It compares multiple strategies under a controlled budget.
+- It is useful for understanding how to make LLM pipelines more cost-aware and reproducible.
+- It fits well into research, evaluation, and applied LLM systems work.
+
+## Method summary
 
 The notebook workflow includes:
 
-1. defining a base prompt for math reasoning
-2. evaluating prompts against a subset of GSM8K problems
+1. defining a base reasoning prompt
+2. evaluating prompts on math problems
 3. tracking token consumption
-4. optimizing prompts using three different strategies
-5. comparing final performance and tradeoffs
+4. optimizing prompts with three search strategies
+5. comparing the final results and tradeoffs
 
-## Algorithms Compared
-
-### 1. Naive APE-Style Optimization
-
-A simpler paraphrasing-based method that attempts to improve the base prompt through straightforward variation and testing.
-
-### 2. Evolutionary Prompt Optimization
-
-A tournament-style optimization process that treats prompts like evolving candidates and uses selection pressure to keep stronger variants.
-
-### 3. Thompson Sampling
-
-A bandit-inspired strategy that balances exploration and exploitation using Bayesian reasoning when choosing prompt candidates.
-
-## Why This Project Matters
-
-This repo is a strong portfolio project because it demonstrates:
-
-- practical experimentation with LLM prompt engineering
-- comparative algorithmic thinking rather than one-off prompting
-- token-budget-aware evaluation
-- reproducible notebook-based research workflow
-- interest in optimizing model behavior systematically
-
-## Running the Project
-
-1. install dependencies
-2. open the notebook
-3. configure your API key securely
-4. run the experiment cells in sequence
-
-### Example setup
+## Run locally
 
 ```bash
 pip install -r requirements.txt
@@ -89,11 +76,17 @@ Then open:
 Prompt_Optimization.ipynb
 ```
 
-## Important Note
+Configure your API key securely before running the experiment cells.
 
-The notebook text in the original project may reference a different author name in some cells or markdown from the original experiment context. This repository is maintained here as part of Abubakar Shahid's portfolio and comparative prompt-engineering work.
+## Industrial positioning
 
-## Author
+A production-grade prompt-optimization system would typically add:
 
-Abubakar Shahid  
-GitHub: <https://github.com/abubakarshahid16>
+- benchmark versioning
+- experiment tracking
+- model-specific prompt registries
+- cost and latency dashboards
+- multi-task evaluation beyond GSM8K
+- approval workflows before prompt rollout
+
+This means the repo is best positioned as an **LLM evaluation and prompt-search research project** with practical relevance to applied AI systems.
